@@ -2,14 +2,14 @@
 <head>
     <meta charset="GB2312">
     <title>ECharts</title>
-    <!-- 来自百度CDN -->
+    <!-- 锟斤拷锟皆百讹拷CDN -->
     <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-10/esl.js"></script>
 </head>
 <body>
-    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <!-- 为ECharts准锟斤拷一锟斤拷锟竭憋拷锟斤拷小锟斤拷锟斤拷锟竭ｏ拷锟斤拷Dom -->
     <div id="main" style="height:400px"></div>
       <script type="text/javascript">
-        // 路径配置
+        // 路锟斤拷锟斤拷锟斤拷
         require.config({
             paths:{ 
                 'echarts' : 'http://echarts.baidu.com/build/echarts',
@@ -17,14 +17,14 @@
             }
         });
         
-        // 使用
+        // 使锟斤拷
         require(
             [
                 'echarts',
-                'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+                'echarts/chart/bar' // 使锟斤拷锟斤拷状图锟酵硷拷锟斤拷bar模锟介，锟斤拷锟斤拷锟斤拷锟斤拷
             ],
             function (ec) {
-                // 基于准备好的dom，初始化echarts图表
+                // 锟斤拷锟斤拷准锟斤拷锟矫碉拷dom锟斤拷锟斤拷始锟斤拷echarts图锟斤拷
                 var myChart = ec.init(document.getElementById('main')); 
                 
                 var option = {
@@ -32,12 +32,12 @@
                         show: true
                     },
                     legend: {
-                        data:['销量']
+                        data:['锟斤拷锟斤拷']
                     },
                     xAxis : [
                         {
                             type : 'category',
-                            data : ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                            data : ["锟斤拷锟斤拷","锟斤拷毛锟斤拷","雪锟斤拷锟斤拷","锟斤拷锟斤拷","锟竭革拷鞋","锟斤拷锟斤拷"]
                         }
                     ],
                     yAxis : [
@@ -47,14 +47,14 @@
                     ],
                     series : [
                         {
-                            "name":"销量",
+                            "name":"锟斤拷锟斤拷",
                             "type":"bar",
                             "data":[5, 20, 40, 10, 10, 20]
                         }
                     ]
                 };
         
-                // 为echarts对象加载数据 
+                // 为echarts锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷 
                 myChart.setOption(option); 
             }
         );
@@ -63,3 +63,4 @@
     
     
 </body>
+</html>
