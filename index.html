@@ -1,79 +1,107 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="nuannuan.github.com : " />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>nuannuan.github.com</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>nuannuan.github.com by KongnuanZhao</title>
   </head>
 
   <body>
+    <div id="container">
+      <div class="inner">
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/KongnuanZhao/nuannuan.github.com">View on GitHub</a>
-
-          <h1 id="project_title">nuannuan.github.com</h1>
-          <h2 id="project_tagline"></h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/KongnuanZhao/nuannuan.github.com/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/KongnuanZhao/nuannuan.github.com/tarball/master">Download this project as a tar.gz file</a>
-            </section>
+        <header>
+          <h1>nuannuan.github.com</h1>
+          <h2></h2>
         </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/KongnuanZhao/nuannuan.github.com/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/KongnuanZhao/nuannuan.github.com/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/KongnuanZhao/nuannuan.github.com" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <hr>
+
+<p>title: "R7"</p>
+
+<h2>
+<a id="output-html_document" class="anchor" href="#output-html_document" aria-hidden="true"><span class="octicon octicon-link"></span></a>output: html_document</h2>
+
+<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com">http://rmarkdown.rstudio.com</a>.</p>
+
+<p>基本统计分析体验</p>
+
+<div class="highlight highlight-r"><pre>data(<span class="pl-vo">mtcars</span>)</pre></div>
+
+<div class="highlight highlight-r"><pre><span class="pl-vo">vars</span> <span class="pl-k">&lt;-</span> c(<span class="pl-s1"><span class="pl-pds">"</span>mpg<span class="pl-pds">"</span></span>,<span class="pl-s1"><span class="pl-pds">"</span>hp<span class="pl-pds">"</span></span>,<span class="pl-s1"><span class="pl-pds">"</span>wt<span class="pl-pds">"</span></span>)
+head(<span class="pl-vo">mtcars</span>[<span class="pl-vo">vars</span>])</pre></div>
+
+<p>通过summary()函数来获取描述性统计量。</p>
+
+<div class="highlight highlight-r"><pre>summary(<span class="pl-vo">mtcars</span>[<span class="pl-vo">vars</span>])</pre></div>
+
+<p>通过sapply()计算描述性统计量</p>
+
+<div class="highlight highlight-r"><pre><span class="pl-en">mystats</span> <span class="pl-k">&lt;-</span> <span class="pl-k">function</span>(<span class="pl-vo">x</span>,<span class="pl-v">na.omit</span><span class="pl-k">=</span><span class="pl-c1">FALSE</span>){
+     <span class="pl-k">if</span>(<span class="pl-vo">na.omit</span>)
+        <span class="pl-vo">x</span> <span class="pl-k">&lt;-</span> <span class="pl-vo">x</span>[<span class="pl-k">!</span>is.na(<span class="pl-vo">x</span>)]
+     <span class="pl-vo">m</span> <span class="pl-k">&lt;-</span> mean(<span class="pl-vo">x</span>)
+     <span class="pl-vo">n</span> <span class="pl-k">&lt;-</span> length(<span class="pl-vo">x</span>)
+     <span class="pl-vo">s</span> <span class="pl-k">&lt;-</span> sd(<span class="pl-vo">x</span>)
+     <span class="pl-vo">skew</span> <span class="pl-k">&lt;-</span> sum((<span class="pl-vo">x</span><span class="pl-k">-</span><span class="pl-vo">m</span>)<span class="pl-k">^</span><span class="pl-c1">3</span><span class="pl-k">/</span><span class="pl-vo">s</span><span class="pl-k">^</span><span class="pl-c1">3</span>)<span class="pl-k">/</span><span class="pl-vo">n</span>
+     <span class="pl-vo">kurt</span> <span class="pl-k">&lt;-</span> sum((<span class="pl-vo">x</span><span class="pl-k">-</span><span class="pl-vo">m</span>)<span class="pl-k">^</span><span class="pl-c1">4</span><span class="pl-k">/</span><span class="pl-vo">s</span><span class="pl-k">^</span><span class="pl-c1">4</span>)<span class="pl-k">/</span><span class="pl-vo">n</span><span class="pl-k">-</span><span class="pl-c1">3</span>
+     <span class="pl-k">return</span>(c(<span class="pl-v">n</span><span class="pl-k">=</span><span class="pl-vo">n</span>,<span class="pl-v">mean</span><span class="pl-k">=</span><span class="pl-vo">m</span>,<span class="pl-v">stdev</span><span class="pl-k">=</span><span class="pl-vo">s</span>,<span class="pl-v">skew</span><span class="pl-k">=</span><span class="pl-vo">skew</span>,<span class="pl-v">kurtosis</span><span class="pl-k">=</span><span class="pl-vo">kurt</span>))
+}
+sapply(<span class="pl-vo">mtcars</span>[<span class="pl-vo">vars</span>],<span class="pl-vo">mystats</span>)</pre></div>
+
+<p>通过Hmisc包中的describe()函数计算描述性统计量
+可返回变量和观测的数量、缺失值和唯一值的数据、平均值、分位数，以及五个最大的值和五个最小的值</p>
+
+<div class="highlight highlight-r"><pre>install.packages(<span class="pl-s1"><span class="pl-pds">"</span>Hmisc<span class="pl-pds">"</span></span>)
+library(<span class="pl-vo">Hmisc</span>)
+describe(<span class="pl-vo">mtcars</span>[<span class="pl-vo">vars</span>])</pre></div>
+
+<p>分组计算描述性统计量
+使用aggregate()分组获取描述性统计量</p>
+
+<div class="highlight highlight-r"><pre>aggregate(<span class="pl-vo">mtcars</span>[<span class="pl-vo">vars</span>],<span class="pl-v">by</span><span class="pl-k">=</span><span class="pl-st">list</span>(<span class="pl-v">am</span><span class="pl-k">=</span><span class="pl-vo">mtcars</span><span class="pl-k">$</span><span class="pl-vo">am</span>),<span class="pl-vo">mean</span>)
+aggregate(<span class="pl-vo">mtcars</span>[<span class="pl-vo">vars</span>],<span class="pl-v">by</span><span class="pl-k">=</span><span class="pl-st">list</span>(<span class="pl-v">am</span><span class="pl-k">=</span><span class="pl-vo">mtcars</span><span class="pl-k">$</span><span class="pl-vo">am</span>),<span class="pl-vo">sd</span>)</pre></div>
+
+<p>独立性检验
+1.卡方独立性检验</p>
+
+<div class="highlight highlight-r"><pre>install.packages(<span class="pl-s1"><span class="pl-pds">"</span>vcd<span class="pl-pds">"</span></span>)
+library(<span class="pl-vo">vcd</span>)
+data(<span class="pl-vo">Arthritis</span>)
+<span class="pl-vo">mytable</span> <span class="pl-k">&lt;-</span> xtabs(<span class="pl-k">~</span><span class="pl-vo">Treatment</span><span class="pl-k">+</span><span class="pl-vo">Improved</span>,<span class="pl-v">data</span><span class="pl-k">=</span><span class="pl-vo">Arthritis</span>)
+chisq.test(<span class="pl-vo">mytable</span>)</pre></div>
+
+<p>p值很小所以拒绝治疗类型和治疗结果相互独立的原假设。</p>
+
+<div class="highlight highlight-r"><pre><span class="pl-vo">mytable2</span> <span class="pl-k">&lt;-</span> xtabs(<span class="pl-k">~</span><span class="pl-vo">Treatment</span><span class="pl-k">+</span><span class="pl-vo">Sex</span>,<span class="pl-v">data</span><span class="pl-k">=</span><span class="pl-vo">Arthritis</span>)
+chisq.test(<span class="pl-vo">mytable2</span>)</pre></div>
+
+<p>p值&gt;0.05所以没有足够的理由说明治疗结果和性别之间是不独立的。</p>
+        </section>
+
+        <footer>
+          nuannuan.github.com is maintained by <a href="https://github.com/KongnuanZhao">KongnuanZhao</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
     </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">nuannuan.github.com maintained by <a href="https://github.com/KongnuanZhao">KongnuanZhao</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
   </body>
 </html>
